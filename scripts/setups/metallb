@@ -1,0 +1,11 @@
+diris=/opt/howler0/scripts/setups
+
+microk8s kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
+microk8s kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
+# On first install only
+microk8s kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+ 
+sudo rm /tmp/metaltemp.yaml
+IP=$(ifconfig tun0 | grep 192 | awk '{print $2}') ;cat $diris/metallb-config.yaml | sed "s/PUBIP/${IP}/g" > /tmp/metaltemp.yaml
+microk8s kubectl apply -f /tmp/metaltemp.yaml
+

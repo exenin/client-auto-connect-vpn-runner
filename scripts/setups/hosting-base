@@ -1,0 +1,20 @@
+sudo snap install microk8s --classic
+sudo snap install microstack --devmode --beta
+sudo snap install kubectl --classic
+sudo snap install helm
+
+#give kube config 
+sudo microk8s config > ~/.kube/config
+
+sudo microstack init --auto --control
+
+
+mkdir /backups/
+
+#change horizon listenin port
+cp /var/snap/microstack/common/etc/nginx/snap/sites-enabled/horizon.conf /backups/nginx-horizon.conf
+sed 's/80/8088/g' -i /var/snap/microstack/common/etc/nginx/snap/sites-enabled/horizon.conf 
+
+
+echo 'stack pass is '
+sudo snap get microstack config.credentials.keystone-password

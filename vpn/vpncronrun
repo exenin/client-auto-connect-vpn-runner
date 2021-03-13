@@ -1,0 +1,12 @@
+function logger(){
+    msg=$1
+    t=$(date )
+    echo "$t ::> $msg" 2>&1>> /var/log/howler0.log
+    
+    
+}
+
+logger 'VPN Cron Run '
+bash /opt/vpn/vpn-test.sh  2>&1 >> /var/log/howler0.log
+logger 'Done'
+
