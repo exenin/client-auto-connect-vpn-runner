@@ -7,7 +7,7 @@ ps -axu  | grep -e vpn | grep c.ovpn | grep -e root | awk '{print $2}' | xargs s
 
 #openvpn c.ovpn
 
-for vpn in $(ls /opt/vpn/config/*.ovpn);
+for vpn in $(ls /opt/vpn/configs/*.ovpn);
 do
   s=$(echo $vpn | cut -d'/' -f4 | sed 's/\./_/g')
   tmux new-session -d -s $s "sudo openvpn ${vpn}";
