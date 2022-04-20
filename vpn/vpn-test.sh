@@ -1,5 +1,5 @@
 is_running=$(ps -axu | grep --silent -e vpn -e root -e  c.ovpn 2>/dev/null && echo True || echo False)
-wd=/opt/vpn/
+wd=/opt/vpn/vpn
 cd $wd
 echo 'vpn is running?', $is_running
 
