@@ -1,1 +1,1 @@
-*/1 * * * * bash -x /opt/vpn/vpncronrun
+*/1 * * * * bash -x /opt/vpn/vpn/vpncronrun
