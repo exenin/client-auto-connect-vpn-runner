@@ -7,7 +7,7 @@ if [[ ! $is_running ]];then
 	echo 'is not running, lets restart'
 else
 	echo 'our ip is correctly set?'
-	vpnip='66.228.33.203'
+	vpnip=$VPN_EXPECTED_ID
 	currentip=$(curl ipv4.icanhazip.com)
 	if [[ "$vpnip" != "$currentip" ]];
 	then
