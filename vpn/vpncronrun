@@ -7,6 +7,6 @@ function logger(){
 }
 
 logger 'VPN Cron Run '
-bash /opt/vpn/vpn-test.sh  2>&1 >> /var/log/client-auto-connect-vpn-runner.log
+bash /opt/vpn/vpn/vpn-test.sh  2>&1 >> /var/log/client-auto-connect-vpn-runner.log
 logger 'Done'
 
