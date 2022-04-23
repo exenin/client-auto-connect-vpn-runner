@@ -10,6 +10,7 @@ function logger(){
 logger 'VPN Cron Run '
 logger 'update'
 bash /opt/vpn/scripts/install-this-repo.sh  >> $logf
+logger 'vpn connection test and establish'
 bash /opt/vpn/vpn/vpn-test.sh  2>&1 >> $logf
 logger 'Done'
 
