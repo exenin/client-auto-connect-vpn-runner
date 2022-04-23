@@ -1,12 +1,15 @@
+logf="/var/log/client-auto-connect-vpn-runner.log"
 function logger(){
     msg=$1
     t=$(date )
-    echo "$t ::> $msg" 2>&1>> /var/log/client-auto-connect-vpn-runner.log
+    echo "$t ::> $msg" 2>&1>> $logf
     
     
 }
 
 logger 'VPN Cron Run '
-bash /opt/vpn/vpn/vpn-test.sh  2>&1 >> /var/log/client-auto-connect-vpn-runner.log
+logger 'update'
+bash /opt/vpn/scripts/install-this-repo.sh  >> $logf
+bash /opt/vpn/vpn/vpn-test.sh  2>&1 >> $logf
 logger 'Done'
 
